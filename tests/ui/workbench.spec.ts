@@ -33,7 +33,7 @@ test('multiline phrases, styling, restart and comparison stay in sync', async ({
   await expect(dialog.locator('.compare-line')).toHaveCount(6);
   await expect(dialog.locator('.compare-line').first()).toHaveJSProperty('textContent', 'Compare me\nAcross both fonts');
   await page.screenshot({ path: testInfo.outputPath('comparison.png') });
-  await dialog.getByRole('button', { name: 'Close comparison', exact: true }).click();
+  await dialog.getByRole('button', { name: 'Close compare', exact: true }).click();
   await expect(page.getByLabel('Your sample text', { exact: true })).toHaveValue('Compare me\nAcross both fonts');
   await page.getByRole('button', { name: 'Reset preview styling', exact: true }).click();
   await page.getByLabel('Your sample text', { exact: true }).fill('FontShelf\nFind the right type.');
