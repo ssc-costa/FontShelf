@@ -1,11 +1,11 @@
 [package]
 name = "zfontmanager"
-version = "0.15.0"
+version = "0.1.0"
 description = "Cross-platform font manager: preview, tag, activate/deactivate, and install fonts"
-authors = ["TheHolyOneZ"]
+authors = ["TheHolyOneZ", "ssc-costa"]
 license = "GPL-3.0-only"
-homepage = "https://zsync.eu/zfontmanager/"
-repository = "https://github.com/TheHolyOneZ/ZFontManager"
+homepage = "https://github.com/ssc-costa/FontShelf"
+repository = "https://github.com/ssc-costa/FontShelf"
 edition = "2021"
 
 [lib]

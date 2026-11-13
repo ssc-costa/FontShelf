@@ -11,6 +11,7 @@ import { CardView } from "./components/CardView";
 import { FontList } from "./components/FontList";
 import { Sidebar } from "./components/Sidebar";
 import { TopBar } from "./components/TopBar";
+import { SampleWorkbench } from "./components/SampleWorkbench";
 import { TrashView } from "./components/TrashView";
 import { OnlineView } from "./components/OnlineView";
 import { AboutView } from "./components/AboutView";
@@ -354,6 +355,7 @@ export default function App() {
           <Sidebar />
           <div className="app-main">
             <TopBar />
+            <SampleWorkbench />
             <main className="app-content">
               <MainContent />
             </main>

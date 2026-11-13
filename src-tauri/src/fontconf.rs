@@ -1,7 +1,7 @@
 use std::fs;
 use std::path::Path;
 
-pub const FRAGMENT: &str = "99-zfontmanager.conf";
+pub const FRAGMENT: &str = "99-fontshelf.conf";
 
 pub fn write_fragment(dir: &Path, xml: Option<&str>) -> Result<(), String> {
     let file = dir.join(FRAGMENT);

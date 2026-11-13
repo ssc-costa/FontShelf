@@ -42,8 +42,8 @@ const LINKS: { key: TKey; sub: string; url: string; icon: React.ReactNode }[] = 
   },
   {
     key: "about.source",
-    sub: "github.com/TheHolyOneZ/ZFontManager",
-    url: "https://github.com/TheHolyOneZ/ZFontManager",
+    sub: "github.com/ssc-costa/FontShelf",
+    url: "https://github.com/ssc-costa/FontShelf",
     icon: <GithubGlyph />,
   },
 ];
@@ -66,8 +66,9 @@ export function AboutView() {
       animate={{ opacity: 1, y: 0 }}
       transition={spring}
     >
-      <img className="about-icon" src="/icon-512.png" alt="" draggable={false} />
-      <h1 className="about-name">ZFontManager</h1>
+      <img className="about-icon" src="/fontshelf.svg" alt="" draggable={false} />
+      <h1 className="about-name">FontShelf</h1>
+      <p className="about-desc">Based on ZFontManager by TheHolyOneZ · modified by ssc-costa.</p>
       <div className="about-version tabular">
         {t("about.version", { version: APP_VERSION, license: APP_LICENSE })}
       </div>

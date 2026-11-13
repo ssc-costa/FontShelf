@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { DEFAULT_PREVIEW, readPreviewOptions, readSavedSamples, saveSample, type PreviewOptions, type SavedSample } from "../lib/previewSettings";
 import { listen } from "@tauri-apps/api/event";
 import { open as openDialog } from "@tauri-apps/plugin-dialog";
 import {
@@ -151,6 +152,11 @@ interface FontStore {
   tourStep: number | null;
 
   sampleText: string;
+  previewOptions: PreviewOptions;
+  savedSamples: SavedSample[];
+  setPreviewOptions: (patch: Partial<PreviewOptions>) => void;
+  saveSample: (label: string) => string | null;
+  deleteSample: (id: string) => void;
   sizeIndex: number;
   viewMode: ViewMode;
   expandStyles: boolean;
@@ -301,6 +307,8 @@ function persistPrefs(get: () => FontStore) {
     const s = get();
     void ipc.setPrefs({
       sampleText: s.sampleText,
+      previewOptions: s.previewOptions,
+      savedSamples: s.savedSamples,
       sizeIndex: s.sizeIndex,
       viewMode: s.viewMode,
       expandStyles: s.expandStyles,
@@ -381,6 +389,24 @@ export const useFontStore = create<FontStore>((set, get) => ({
   tourStep: null,
 
   sampleText: t("preview.defaultSample"),
+  previewOptions: DEFAULT_PREVIEW,
+  savedSamples: [],
+  setPreviewOptions: (patch) => {
+    set({ previewOptions: readPreviewOptions({ ...get().previewOptions, ...patch }) });
+    persistPrefs(get);
+  },
+  saveSample: (label) => {
+    const current = get();
+    const next = saveSample(current.savedSamples, label, current.sampleText, crypto.randomUUID());
+    if (next === current.savedSamples) return null;
+    set({ savedSamples: next });
+    persistPrefs(get);
+    return next.find((s) => s.label.toLocaleLowerCase() === label.trim().slice(0, 80).toLocaleLowerCase())?.id ?? null;
+  },
+  deleteSample: (id) => {
+    set({ savedSamples: get().savedSamples.filter((s) => s.id !== id) });
+    persistPrefs(get);
+  },
   sizeIndex: DEFAULT_SIZE_INDEX,
   viewMode: "grid",
   expandStyles: false,
@@ -414,6 +440,8 @@ export const useFontStore = create<FontStore>((set, get) => ({
       const prefs = (await ipc.getPrefs()) ?? {};
       set({
         sampleText: typeof prefs.sampleText === "string" ? prefs.sampleText : get().sampleText,
+        previewOptions: readPreviewOptions(prefs.previewOptions),
+        savedSamples: readSavedSamples(prefs.savedSamples),
         sizeIndex: typeof prefs.sizeIndex === "number" ? prefs.sizeIndex : get().sizeIndex,
         viewMode: (["grid", "list", "waterfall", "cards"] as const).includes(
           prefs.viewMode as ViewMode,

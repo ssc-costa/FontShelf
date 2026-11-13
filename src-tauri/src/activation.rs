@@ -322,7 +322,7 @@ fn reject_fragment(state: &AppState, home: &std::path::Path) -> String {
     }
     format!(
         "<?xml version=\"1.0\"?>\n<!DOCTYPE fontconfig SYSTEM \"fonts.dtd\">\n\
-         <!-- Managed by ZFontManager - do not edit; toggling fonts rewrites this file -->\n\
+         <!-- Managed by FontShelf - do not edit; toggling fonts rewrites this file -->\n\
          <fontconfig>\n  <selectfont>\n    <rejectfont>\n{globs}    </rejectfont>\n  </selectfont>\n</fontconfig>\n"
     )
 }
@@ -607,7 +607,7 @@ mod tests {
         std::fs::create_dir_all(&tmp).unwrap();
 
         unsafe { std::env::set_var("XDG_CONFIG_HOME", &tmp) };
-        let fragment = tmp.join("fontconfig/conf.d/99-zfontmanager.conf");
+        let fragment = tmp.join("fontconfig/conf.d/99-fontshelf.conf");
 
         let mut state = AppState::default();
         let font = "/tmp/My <Fancy> & Font.ttf";

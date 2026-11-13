@@ -6,6 +6,7 @@ import { PillToggle } from "../design/primitives/PillToggle";
 import { spring, springSnappy, springSoft, staggerDelay } from "../design/springs";
 import { useFontCss } from "../lib/fontLoader";
 import { useInkPadding } from "../lib/inkFit";
+import { usePreviewStyle } from "../lib/usePreviewStyle";
 import { buildFamilyMenu } from "../lib/menus";
 import { openContextMenu } from "../design/primitives/ContextMenu";
 import { activeConflictsFor, conflictsFor, SIZES, useFontStore, type Family } from "../state/fontStore";
@@ -55,6 +56,7 @@ function FacePreview({
 }) {
   const t = useT();
   const face = group.lead;
+  const previewStyle = usePreviewStyle();
   const { fontFamily, failed } = useFontCss(face);
   const setStyleActive = useFontStore((s) => s.setStyleActive);
   const sampleSize = Math.min(size, 32);
@@ -81,6 +83,7 @@ function FacePreview({
             className="face-sample"
             style={{
               ...ink,
+              ...previewStyle,
               fontFamily,
               fontSize: sampleSize,
               fontStyle: face.italic ? "italic" : "normal",
@@ -130,6 +133,7 @@ function FacePreview({
 
 export const FamilyCard = memo(function FamilyCard({ family }: { family: Family }) {
   const t = useT();
+  const previewStyle = usePreviewStyle();
   const sampleText = useFontStore((s) => s.sampleText);
   const previewUppercase = useFontStore((s) => s.previewUppercase);
   const sizeIndex = useFontStore((s) => s.sizeIndex);
@@ -293,6 +297,7 @@ export const FamilyCard = memo(function FamilyCard({ family }: { family: Family 
                     className="preview-text"
                     style={{
                       ...ink,
+                      ...previewStyle,
                       fontFamily,
                       fontSize: size,
                       fontStyle: lead.italic ? "italic" : "normal",

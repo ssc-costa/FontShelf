@@ -40,9 +40,9 @@ export function Titlebar() {
       transition={springSoft}
     >
       <div className="titlebar-brand" data-tauri-drag-region>
-        <img className="brand-mark" src="/icon.png" alt="" draggable={false} />
+        <img className="brand-mark" src="/fontshelf.svg" alt="" draggable={false} />
         <span className="titlebar-title" data-tauri-drag-region>
-          FontManager
+          FontShelf
         </span>
       </div>
       <div className="titlebar-controls">

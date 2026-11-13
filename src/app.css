@@ -4590,3 +4590,43 @@ h2.detail-title.copy-name {
   cursor: help;
   user-select: none;
 }
+.sample-workbench {
+  flex-shrink: 0;
+  padding: 12px 20px 14px;
+  background: var(--e0);
+  border-bottom: 1px solid rgba(var(--ink-rgb), 0.08);
+}
+.sample-heading { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+.sample-title { color: var(--text-primary); font-size: 12px; font-weight: 600; }
+.sample-heading > span { font-size: 11px; color: var(--text-tertiary); }
+.sample-heading .case-toggle { margin-left: auto; }
+.sample-workbench textarea {
+  display: block; width: 100%; min-height: 58px; max-height: 180px; resize: vertical;
+  padding: 10px 12px; border: 1px solid rgba(var(--ink-rgb), 0.12); border-radius: 7px;
+  background: var(--e1); color: var(--text-primary); font: inherit; font-size: 14px;
+  line-height: 1.4; outline: none;
+}
+.sample-workbench textarea:focus { border-color: var(--accent-a); }
+.sample-tools { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.sample-tools select, .sample-name, .sample-action, .sample-icon {
+  min-height: 30px; border: 1px solid rgba(var(--ink-rgb), 0.12); border-radius: 5px;
+  color: var(--text-secondary); background: var(--e1); font: inherit; font-size: 11px;
+}
+.sample-tools select { width: 145px; padding: 0 7px; }
+.sample-tools option { background: var(--e1); color: var(--text-primary); }
+.sample-name { width: 120px; padding: 0 8px; }
+.sample-action { display: inline-flex; align-items: center; justify-content: center; gap: 5px; padding: 0 9px; }
+.sample-icon { display: inline-grid; place-items: center; width: 30px; flex-shrink: 0; }
+.sample-action:hover:not(:disabled), .sample-icon:hover:not(:disabled) { color: var(--accent-a); border-color: var(--accent-a); }
+.sample-tools button:disabled { opacity: 0.35; cursor: default; }
+.sample-tools :focus-visible { outline: 2px solid var(--accent-a); outline-offset: 2px; }
+.sample-slider, .sample-color { display: inline-flex; align-items: center; gap: 6px; color: var(--text-secondary); font-size: 11px; }
+.sample-slider input { width: 65px; accent-color: var(--accent-a); }
+.sample-slider output { min-width: 27px; font-variant-numeric: tabular-nums; }
+.sample-color input { width: 25px; height: 25px; padding: 1px; border: 1px solid rgba(var(--ink-rgb), 0.15); border-radius: 4px; background: transparent; cursor: pointer; }
+.sample-compact { padding: 12px 18px; }
+.compare-panel { overflow-y: auto; }
+.face-row { min-height: 44px; height: auto; }
+.face-sample { min-width: 0; }
+.waterfall-text { min-width: 0; }
+.cover-specimen { max-height: 100%; overflow-y: auto; }

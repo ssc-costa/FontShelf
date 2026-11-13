@@ -13,6 +13,7 @@ import { useT } from "../lib/i18n";
 import { SIZES, useFontStore, type Family } from "../state/fontStore";
 import { SelectBox } from "./SelectBox";
 import { previewText } from "../lib/familyState";
+import { usePreviewStyle } from "../lib/usePreviewStyle";
 
 const MIN_TILE = 220;
 const GAP = 14;
@@ -27,6 +28,7 @@ function hue(name: string): number {
 
 const CoverTile = memo(function CoverTile({ family, cover }: { family: Family; cover: string | undefined }) {
   const t = useT();
+  const previewStyle = usePreviewStyle();
   const sampleText = useFontStore((s) => s.sampleText);
   const previewUppercase = useFontStore((s) => s.previewUppercase);
   const sizeIndex = useFontStore((s) => s.sizeIndex);
@@ -90,6 +92,7 @@ const CoverTile = memo(function CoverTile({ family, cover }: { family: Family; c
               fontSize: Math.min(SIZES[sizeIndex], 44),
               fontStyle: lead.italic ? "italic" : "normal",
               opacity: fontFamily ? 1 : 0,
+              ...previewStyle,
             }}
           >
             {text}

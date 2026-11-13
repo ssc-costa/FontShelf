@@ -19,7 +19,7 @@ pub fn managed_font_dir() -> PathBuf {
         dirs::data_dir()
             .unwrap_or_else(|| PathBuf::from("."))
             .join("fonts")
-            .join("ZFontManager")
+            .join("FontShelf")
     }
     #[cfg(target_os = "macos")]
     {

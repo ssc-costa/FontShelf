@@ -10,6 +10,7 @@ import { InkLine } from "./InkLine";
 import { useInkPadding } from "../lib/inkFit";
 import { previewText } from "../lib/familyState";
 import { useT } from "../lib/i18n";
+import { SampleWorkbench } from "./SampleWorkbench";
 
 const COMPARE_SIZES = [14, 24, 40];
 
@@ -116,6 +117,7 @@ export function CompareOverlay() {
                 <X size={15} strokeWidth={1.5} />
               </button>
             </header>
+            <SampleWorkbench compact />
             <div className="compare-grid" style={{ "--cols": families.length } as React.CSSProperties}>
               {families.map((f) => (
                 <CompareColumn

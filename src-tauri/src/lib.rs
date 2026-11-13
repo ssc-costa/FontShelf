@@ -820,7 +820,7 @@ fn build_tray(app: &tauri::AppHandle) -> tauri::Result<()> {
     use tauri::menu::{Menu, MenuItem};
     use tauri::tray::TrayIconBuilder;
 
-    let show = MenuItem::with_id(app, "show", "Show ZFontManager", true, None::<&str>)?;
+    let show = MenuItem::with_id(app, "show", "Show FontShelf", true, None::<&str>)?;
     let quit = MenuItem::with_id(app, "quit", "Quit", true, None::<&str>)?;
     let menu = Menu::with_items(app, &[&show, &quit])?;
 
@@ -831,7 +831,7 @@ fn build_tray(app: &tauri::AppHandle) -> tauri::Result<()> {
 
     let builder = TrayIconBuilder::with_id("main-tray")
         .icon(icon)
-        .tooltip("ZFontManager")
+        .tooltip("FontShelf")
         .menu(&menu);
 
     let builder = if cfg!(target_os = "windows") {

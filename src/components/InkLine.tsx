@@ -1,5 +1,6 @@
 import type { CSSProperties, ReactNode } from "react";
 import { useInkPadding } from "../lib/inkFit";
+import { usePreviewStyle } from "../lib/usePreviewStyle";
 
 export function InkLine({
   className,
@@ -20,9 +21,10 @@ export function InkLine({
   style?: CSSProperties;
   children: ReactNode;
 }) {
+  const previewStyle = usePreviewStyle();
   const ink = useInkPadding(fontFamily, text, size, lineHeight, italic);
   return (
-    <p className={className} style={{ ...style, ...ink }}>
+    <p className={className} style={{ ...style, ...ink, ...previewStyle }}>
       {children}
     </p>
   );

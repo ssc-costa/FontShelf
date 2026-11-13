@@ -19,3 +19,5 @@ strip-comments.mjs
 /release/
 /.gitignore
 /Issues/
+/test-results/
+/playwright-report/

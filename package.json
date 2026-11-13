@@ -1,18 +1,18 @@
 {
-  "name": "zfontmanager",
-  "description": "The free, open-source font manager for Linux, Windows and macOS",
-  "author": "TheHolyOneZ (https://github.com/TheHolyOneZ)",
+  "name": "fontshelf",
+  "description": "A personal desktop font library with saved sample text and live comparisons",
+  "author": "ssc-costa; based on ZFontManager by TheHolyOneZ",
   "license": "GPL-3.0-only",
-  "homepage": "https://zsync.eu/zfontmanager/",
+  "homepage": "https://github.com/ssc-costa/FontShelf",
   "repository": {
     "type": "git",
-    "url": "https://github.com/TheHolyOneZ/ZFontManager.git"
+    "url": "https://github.com/ssc-costa/FontShelf.git"
   },
   "bugs": {
-    "url": "https://github.com/TheHolyOneZ/ZFontManager/issues"
+    "url": "https://github.com/ssc-costa/FontShelf/issues"
   },
   "private": true,
-  "version": "0.15.0",
+  "version": "0.1.0",
   "type": "module",
   "packageManager": "pnpm@10.33.0",
   "engines": {
@@ -24,7 +24,8 @@
     "preview": "vite preview",
     "test": "node --test \"tests/**/*.test.ts\"",
     "tauri": "tauri",
-    "i18n:check": "node check-locales.mjs"
+    "i18n:check": "node check-locales.mjs",
+    "test:ui": "playwright test"
   },
   "dependencies": {
     "@fontsource-variable/inter": "^5.2.8",
@@ -41,11 +42,17 @@
     "zustand": "^5.0.14"
   },
   "devDependencies": {
+    "@playwright/test": "^1.65.0",
     "@tauri-apps/cli": "^2.12.2",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@vitejs/plugin-react": "^4.6.0",
     "typescript": "~5.8.3",
     "vite": "^7.0.4"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
   }
 }

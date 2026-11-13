@@ -90,7 +90,7 @@ fn state_path() -> PathBuf {
     }
     dirs::config_dir()
         .unwrap_or_else(|| PathBuf::from("."))
-        .join("ZFontManager")
+        .join("FontShelf")
         .join("state.json")
 }
 
@@ -100,7 +100,7 @@ pub fn app_data_dir() -> PathBuf {
     }
     dirs::data_dir()
         .unwrap_or_else(|| PathBuf::from("."))
-        .join("ZFontManager")
+        .join("FontShelf")
 }
 
 pub fn trash_dir() -> PathBuf {

@@ -6,6 +6,7 @@ import { useFontStore, type Family } from "../state/fontStore";
 import { useT } from "../lib/i18n";
 import { previewText } from "../lib/familyState";
 import { useInkPadding } from "../lib/inkFit";
+import { usePreviewStyle } from "../lib/usePreviewStyle";
 
 const WATERFALL_SIZES = [8, 10, 12, 14, 16, 18, 20, 24, 28, 32, 40, 48, 56, 64, 80, 96];
 
@@ -21,8 +22,9 @@ function WaterfallText({
   italic: boolean;
 }) {
   const ink = useInkPadding(fontFamily, text, size, 1.15, italic);
+  const previewStyle = usePreviewStyle();
   return (
-    <span className="waterfall-text" style={ink}>
+    <span className="waterfall-text" style={{ ...ink, ...previewStyle }}>
       {text}
     </span>
   );

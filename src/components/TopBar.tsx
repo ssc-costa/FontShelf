@@ -12,7 +12,6 @@ import {
   List,
   RefreshCw,
   Search,
-  Type,
   X,
 } from "lucide-react";
 import { useLayoutEffect, useRef, useState, type CSSProperties } from "react";
@@ -427,10 +426,6 @@ function CompareButton() {
 
 export function TopBar() {
   const t = useT();
-  const sampleText = useFontStore((s) => s.sampleText);
-  const setSampleText = useFontStore((s) => s.setSampleText);
-  const previewUppercase = useFontStore((s) => s.previewUppercase);
-  const setPreviewUppercase = useFontStore((s) => s.setPreviewUppercase);
   const sizeIndex = useFontStore((s) => s.sizeIndex);
   const setSizeIndex = useFontStore((s) => s.setSizeIndex);
   const viewMode = useFontStore((s) => s.viewMode);
@@ -483,26 +478,6 @@ export function TopBar() {
             <X size={13} strokeWidth={2} />
           </button>
         )}
-      </div>
-
-      <div className="topbar-field topbar-sample">
-        <Type size={14} strokeWidth={1.5} className="field-icon" />
-        <input
-          value={sampleText}
-          onChange={(e) => setSampleText(e.target.value)}
-          placeholder={t("top.samplePlaceholder")}
-          aria-label={t("top.sampleAria")}
-          spellCheck={false}
-        />
-        <button
-          className={`case-toggle ${previewUppercase ? "case-toggle-on" : ""}`}
-          aria-label={t("top.uppercase")}
-          aria-pressed={previewUppercase}
-          title={t("top.uppercase")}
-          onClick={() => setPreviewUppercase(!previewUppercase)}
-        >
-          AA
-        </button>
       </div>
 
       {stacked && <span className="topbar-break" aria-hidden="true" />}
