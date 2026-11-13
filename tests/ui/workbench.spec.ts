@@ -26,7 +26,7 @@ test('multiline phrases, styling, restart and comparison stay in sync', async ({
   await expect(page.getByLabel('Your sample text', { exact: true })).toHaveValue(text);
   await page.locator('.family-card').nth(0).click();
   await page.locator('.family-card').nth(1).click({ modifiers: ['Control'] });
-  await page.getByRole('button', { name: /Compare.*2|Compare 2/ }).click();
+  await page.getByRole('button', { name: 'Compare 2 selected fonts', exact: true }).click();
   const dialog = page.getByRole('dialog');
   await expect(dialog).toBeVisible();
   await dialog.getByLabel('Your sample text', { exact: true }).fill('Compare me\nAcross both fonts');
