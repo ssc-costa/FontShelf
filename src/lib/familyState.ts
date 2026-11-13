@@ -25,7 +25,7 @@ const FORMAT_RANK: Record<string, number> = { otf: 0, ttf: 1, woff2: 2, woff: 3 
 export const isWebFormat = (format: string) => format === "woff" || format === "woff2";
 
 export function previewText(sample: string, fallback: string, uppercase: boolean): string {
-  const text = sample.trim() || fallback;
+  const text = sample.trim() ? sample : fallback;
   return uppercase ? text.toLocaleUpperCase() : text;
 }
 

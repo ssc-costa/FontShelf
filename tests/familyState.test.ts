@@ -126,7 +126,8 @@ test("a family label names every format, up to the limit", () => {
 });
 
 test("previews use the sample text, or the name when it is empty", () => {
-  assert.equal(previewText("  Hamburg ", "Lato", false), "Hamburg");
+  assert.equal(previewText("  Hamburg ", "Lato", false), "  Hamburg ");
+  assert.equal(previewText("  Café\nBar  ", "Lato", false), "  Café\nBar  ");
   assert.equal(previewText("   ", "Lato", false), "Lato");
 });
 
